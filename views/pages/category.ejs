@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Categories</h1>
+        <ul>
+            <% categories.forEach(function(category) { %>
+                <li>
+                    <strong class="text-primary"><%= category.name %></strong><br>
+                    <strong>name:</strong> <%= category.name %> <br> <strong>description:</strong>  <%= category.description %>
+                </li>
+            <% }); %>
+        </ul>
+
+     </div>
+</main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
