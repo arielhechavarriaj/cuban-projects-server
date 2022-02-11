@@ -3,6 +3,7 @@ const express = require('express');
 const { Category } = require('../models/category');
 const router = express.Router();
 const mongoose = require('mongoose');
+const linkPreviewGenerator = require("link-preview-generator");
 
 //Get all projects
 router.get(`/`, async (req, res) => {
@@ -38,6 +39,7 @@ router.get(`/:id`, async (req, res) => {
     res.send(project);
 });
 
+
 //Add a projects
 router.post(`/`, async (req, res) => {
     const category = await Category.findById(req.body.category);
@@ -65,13 +67,14 @@ router.put('/:id', async (req, res) => {
 
     const project = await Project.findById(req.params.id);
     if (!project) return res.status(400).send('Invalid Project!');
-
-    const updatedProject = await Project.findByIdAndUpdate(
+    
+    const updatedProject = await Project.findOneAndUpdate(
         req.params.id,
         {
             name: req.body.name,
             description: req.body.description,
-            category: req.body.category
+            category: req.body.category,
+            url: req.body.url
         },
         { new: true }
     );
@@ -83,7 +86,7 @@ router.put('/:id', async (req, res) => {
 
 //Delete a project
 router.delete('/:id', (req, res) => {
-    Project.findByIdAndRemove(req.params.id)
+    Project.findByIdAndDelete(req.params.id)
         .then((project) => {
             if (project) {
                 return res.status(200).json({

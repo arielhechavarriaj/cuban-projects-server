@@ -37,6 +37,7 @@ app.get(`${api}`, function(req, res) {
     res.render('pages/index');
 });
 
+
 // about page
 app.get(`${api}/about`, function(req, res) {
     res.render('pages/about');
