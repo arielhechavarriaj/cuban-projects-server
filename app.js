@@ -53,10 +53,9 @@ app.use(`${api}/projects`, projectsRoutes);
 
 //Database
 mongoose
-    .connect(process.env.CONNECTION_STRING, {
+    .connect( 'mongodb+srv://ariel:ahjardines123...@cluster0.taubc.mongodb.net/cuban-api?retryWrites=true&w=majority', {
         useNewUrlParser: true,
-        useUnifiedTopology: true,
-        dbName: process.env.DB_NAME
+        useUnifiedTopology: true
     })
     .then(() => {
         console.log('we are using ' + process.env.DB_NAME);
