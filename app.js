@@ -22,8 +22,8 @@ app.use(errorHandler);
 const categoriesRoutes = require('./routes/categories');
 const projectsRoutes = require('./routes/projects');
 
-const api = process.env.API_URL;
-const port = process.env.PORT;
+const api = "api/v1/;
+const port =3000;
 
 
 // view engine setup
