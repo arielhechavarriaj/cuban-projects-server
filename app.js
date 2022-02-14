@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv/config');
 const path = require('path');
-const errorHandler = require('./helpers/error-handler');
+
 
 app.use(express.static(__dirname + '/libs'));
 
@@ -16,7 +16,7 @@ app.options('*', cors());
 //middleware
 app.use(express.json());
 app.use(morgan('tiny'));
-app.use(errorHandler);
+
 
 //Routes
 const categoriesRoutes = require('./routes/categories');
