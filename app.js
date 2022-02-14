@@ -58,15 +58,15 @@ mongoose
         useUnifiedTopology: true
     })
     .then(() => {
-        console.log('we are using ' + process.env.DB_NAME);
+        console.log('we are using ' + cuban-api);
         console.log("🌎 Successfully connected to the database");
     })
     .catch((err) => {
         console.log('😞 Could not connect to the database. Exiting now...', err);
     });
-const PORT = process.env.PORT || 3000;
+const PORT =3000;
 
 //Server
 app.listen(PORT, () => {
-    console.log(`✌server is running http://localhost:${port}`);
+    console.log(`✌server is running http://localhost:3000`);
 });
