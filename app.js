@@ -33,7 +33,7 @@ app.set('view engine', 'ejs');
 // use res.render to load up an ejs view file
 
 // index page
-app.get(`${api}`, function(req, res) {
+app.get(`/`, function(req, res) {
     res.render('pages/index');
 });
 
@@ -58,21 +58,12 @@ mongoose
   'mongodb+srv://ariel:ahjardines123...@cluster0.taubc.mongodb.net/cuban-api?retryWrites=true&w=majority'
 
 
-        ,  {
-            useFindAndModify: false,
-            useUnifiedTopology: true,
-            useNewUrlParser: true,
-            useCreateIndex: true,
-            server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-            replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-        }),
-    function (err) {
-        if (err) return console.log("Error: ", err);
-        console.log(
-            "MongoDB Connection -- Ready state is:",
-            mongoose.connection.readyState
-        );
-    }
+        , {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        dbName: process.env.DB_NAME
+
+    })
     .then(() => {
 
         console.log("🌎 Successfully connected to the database");
