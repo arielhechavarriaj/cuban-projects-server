@@ -5,15 +5,14 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv/config');
 const path = require('path');
+const helmet = require('helmet');
+const compression = require('compression');
 
-
+app.use(helmet());
 app.use(express.static(__dirname + '/libs'));
-
-
+app.use(compression()); //Compress all routes
 app.use(cors());
 app.options('*', cors());
-
-//middleware
 app.use(express.json());
 app.use(morgan('tiny'));
 
@@ -26,15 +25,12 @@ const api = process.env.API_URL;
 const port = process.env.PORT;
 
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
 // use res.render to load up an ejs view file
 
 // index page
 app.get(`/`, function(req, res) {
-    res.render('pages/index');
+    res.sendFile(process.cwd() + '/index.html');
 });
 
 

@@ -3,7 +3,6 @@ const express = require('express');
 const { Category } = require('../models/category');
 const router = express.Router();
 const mongoose = require('mongoose');
-const linkPreviewGenerator = require("link-preview-generator");
 
 //Get all projects
 router.get(`/`, async (req, res) => {
@@ -18,11 +17,6 @@ router.get(`/`, async (req, res) => {
     if (!projectList) {
         res.status(500).json({ success: false });
     }
-
-    /* res.render(`pages/projects`, {
-        categories: categoryList
-           });*/
-
     res.send({
          projectList
     });
