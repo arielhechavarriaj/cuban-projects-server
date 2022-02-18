@@ -4,7 +4,7 @@
   "description": "backend of the cuban open source projects",
   "main": "app.js",
   "scripts": {
-    "start": "npm start app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ariel Hechavarria Jardines",
@@ -19,5 +19,8 @@
     "mongoose": "^5.10.19",
     "morgan": "^1.10.0",
     "multer": "^1.4.2"
+  },
+  "engines": {
+    "node": "14.18.0"
   }
 }

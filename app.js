@@ -53,13 +53,28 @@ app.use(`${api}/projects`, projectsRoutes);
 
 //Database
 mongoose
-    .connect(process.env.CONNECTION_STRING, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        dbName: process.env.DB_NAME
-    })
+    .connect(
+
+  'mongodb+srv://ariel:ahjardines123...@cluster0.taubc.mongodb.net/cuban-api?retryWrites=true&w=majority'
+
+
+        ,  {
+            useFindAndModify: false,
+            useUnifiedTopology: true,
+            useNewUrlParser: true,
+            useCreateIndex: true,
+            server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+            replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+        }),
+    function (err) {
+        if (err) return console.log("Error: ", err);
+        console.log(
+            "MongoDB Connection -- Ready state is:",
+            mongoose.connection.readyState
+        );
+    }
     .then(() => {
-        console.log('we are using ' + cuban-api);
+
         console.log("🌎 Successfully connected to the database");
     })
     .catch((err) => {
