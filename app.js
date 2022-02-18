@@ -22,30 +22,45 @@ app.use(morgan('tiny'));
 const categoriesRoutes = require('./routes/categories');
 const projectsRoutes = require('./routes/projects');
 
-const api = "api/v1/";
-const port =3000;
+const api = process.env.API_URL;
+const port = process.env.PORT;
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 // use res.render to load up an ejs view file
+
 // index page
 app.get(`${api}`, function(req, res) {
     res.render('pages/index');
 });
+
+
 // about page
 app.get(`${api}/about`, function(req, res) {
     res.render('pages/about');
 });
+
+
+
+
+
+
 app.use(`${api}/categories`, categoriesRoutes);
 app.use(`${api}/projects`, projectsRoutes);
+
 //Database
 mongoose
-    .connect( 'mongodb+srv://ariel:ahjardines123...@cluster0.taubc.mongodb.net/cuban-api?retryWrites=true&w=majority', {
+    .connect(process.env.CONNECTION_STRING, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        dbName: process.env.DB_NAME
     })
     .then(() => {
-         console.log("🌎 Successfully connected to the database");
+        console.log('we are using ' + cuban-api);
+        console.log("🌎 Successfully connected to the database");
     })
     .catch((err) => {
         console.log('😞 Could not connect to the database. Exiting now...', err);
