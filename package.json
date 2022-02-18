@@ -4,7 +4,7 @@
   "description": "backend of the cuban open source projects",
   "main": "app.js",
   "scripts": {
-    "start": "pm2 start app.js",
+        "start ": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "stop":"pm2 stop app.js",
     "list":"pm2 list "
