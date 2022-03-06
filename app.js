@@ -48,6 +48,6 @@ mongoose
         console.log('😞 Could not connect to the database. Exiting now...', err);
     });
 //Server
-app.listen(port, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log(`✌server is running  in http://localhost:${port}`);
 });
