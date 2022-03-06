@@ -23,8 +23,8 @@ const port = process.env.PORT;
 const categoriesRoutes = require('./routes/categories');
 const projectsRoutes = require('./routes/projects');
 
-app.use(`${api}/categories`, categoriesRoutes);
-app.use(`${api}/projects`, projectsRoutes);
+app.use(`/categories`, categoriesRoutes);
+app.use(`/projects`, projectsRoutes);
 
 
 // index page
