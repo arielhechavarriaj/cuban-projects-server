@@ -5,18 +5,13 @@ const api = process.env.API_URL;
 
 router.get(`/`, async (req, res) =>{
     const categoryList = await Category.find();
-
-    
+   
 
     if(!categoryList) {
         res.status(500).json({success: false})
     } 
     res.status(200).send(categoryList);
-   
-   /* res.render(`pages/category`, {
-        categories: categoryList
-           });
-*/
+
 
 })
 
